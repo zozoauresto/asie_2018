@@ -1,5 +1,7 @@
 package eu.epitech.nagamouttou.stephane.todolist;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 import eu.epitech.nagamouttou.stephane.todolist.db.TaskContract;
 import eu.epitech.nagamouttou.stephane.todolist.db.TaskDbHelper;
@@ -35,6 +39,29 @@ public class TaskEditAdd extends AppCompatActivity {
         db.close();
 
         Intent menu = new Intent(this, MainActivity.class);
+
+        setNotification(intent.getStringExtra("DateTime"));
+
         startActivity(menu);
+    }
+
+    private void setNotification(String Date) {
+
+        String[] tmp = Date.split(" ");
+        String[] date = tmp[0].split("-");
+        String[] time = tmp[1].split(":");
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.valueOf(time[0]));
+        calendar.set(Calendar.MINUTE, Integer.valueOf(time[1]));
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(date[0]));
+        calendar.set(Calendar.MONTH, Integer.valueOf(date[1]) - 1);
+        calendar.set(Calendar.YEAR, Integer.valueOf(date[2]));
+
+        Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        assert alarmManager != null;
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 }

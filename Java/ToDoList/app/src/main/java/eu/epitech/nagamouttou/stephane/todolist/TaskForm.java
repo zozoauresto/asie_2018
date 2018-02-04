@@ -25,7 +25,7 @@ public class TaskForm extends AppCompatActivity {
 
         intent.putExtra("Task", ((EditText)findViewById(R.id.Task)).getText().toString());
         intent.putExtra("Content", ((EditText)findViewById(R.id.Content)).getText().toString());
-        intent.putExtra("DateTime", ((EditText)findViewById(R.id.txtdate)).getText().toString() + " " + ((EditText)findViewById(R.id.txttime)).getText().toString());
+        intent.putExtra("DateTime", ((EditText)findViewById(R.id.txtdate)).getText().toString() + " " + ((EditText)findViewById(R.id.txttime)).getText().toString() + ":00");
         startActivity(intent);
     }
 

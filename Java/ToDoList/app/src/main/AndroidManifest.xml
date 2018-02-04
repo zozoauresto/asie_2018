@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.epitech.nagamouttou.stephane.todolist">
 
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +20,9 @@
         <activity android:name=".TaskForm" />
         <activity android:name=".TaskAdd" />
         <activity android:name=".TaskEdit" />
-        <activity android:name=".TaskEditAdd"></activity>
+        <activity android:name=".TaskEditAdd">
+        </activity>
+        <receiver android:name=".Notification_reciever"/>
     </application>
 
 </manifest>

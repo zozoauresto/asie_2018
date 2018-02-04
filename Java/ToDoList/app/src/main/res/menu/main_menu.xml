@@ -5,10 +5,15 @@
         android:id="@+id/add_task"
         android:title="Ajouter une tâche" />
     <item
-        android:id="@+id/Trie1"
-        android:title="Trie + récent" />
+    android:id="@+id/Trie1"
+    android:title="Trie limite + récent" />
     <item
         android:id="@+id/Trie2"
-        android:title="Trie - récent" />
-
+        android:title="Trie limite - récent" />
+    <item
+        android:id="@+id/Trie3"
+        android:title="Trie tâche [abc...]" />
+    <item
+        android:id="@+id/Trie4"
+        android:title="Trie tâche [zxy...]" />
 </menu>

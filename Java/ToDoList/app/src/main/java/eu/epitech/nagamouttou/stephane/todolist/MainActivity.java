@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.SystemClock;
+import android.provider.CalendarContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 import eu.epitech.nagamouttou.stephane.todolist.db.TaskContract;
@@ -52,24 +54,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(this, TaskForm.class);
-        switch (item.getItemId()) {
-            case R.id.add_task:
-                startActivity(intent);
-                return true;
-            case R.id.Trie1:
-                OrderBy = TaskContract.TaskEntry.COL_TASK_DATE  + " DESC";
-                updateUI();
-                return true;
-            case R.id.Trie2:
-                OrderBy = TaskContract.TaskEntry.COL_TASK_DATE  + " ASC";
-                updateUI();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+            Intent intent = new Intent(this, TaskForm.class);
+            switch (item.getItemId()) {
+                case R.id.add_task:
+                    startActivity(intent);
+                    return true;
+                case R.id.Trie1:
+                    OrderBy = TaskContract.TaskEntry.COL_TASK_DATE  + " ASC";
+                    updateUI();
+                    return true;
+                case R.id.Trie2:
+                    OrderBy = TaskContract.TaskEntry.COL_TASK_DATE  + " DESC";
+                    updateUI();
+                    return true;
+                case R.id.Trie3:
+                    OrderBy = TaskContract.TaskEntry.COL_TASK_TITLE  + " ASC";
+                    updateUI();
+                    return true;
+                case R.id.Trie4:
+                    OrderBy = TaskContract.TaskEntry.COL_TASK_TITLE  + " DESC";
+                    updateUI();
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
         }
-    }
 
     public void editTask(View view) {
         View parent = (View) view.getParent();
@@ -119,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         db.close();
     }
 
-    public void dialog(View view){
+    public void dialog(View view) {
 
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
         final String[] grpname = {"TODO", "START", "DONE", "ERASE"};
@@ -136,8 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     db.update(TaskContract.TaskEntry.TABLE, values, TaskContract.TaskEntry._ID + " = " + id, null);
                     db.close();
                     updateUI();
-                }
-                else
+                } else
                     deleteTask(parent);
                 dialog.dismiss();
             }

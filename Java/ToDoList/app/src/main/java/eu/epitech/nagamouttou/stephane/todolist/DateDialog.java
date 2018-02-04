@@ -30,7 +30,7 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         String day = String.valueOf(Day).length() == 1 ? "0" + String.valueOf(Day) : String.valueOf(Day);
         String month = String.valueOf(Month + 1).length() == 1 ? "0" + String.valueOf(Month + 1) : String.valueOf(Month + 1);
         String year = String.valueOf(Year).length() == 1 ? "0" + String.valueOf(Year) : String.valueOf(Year);
-        String date= day + "-" + month + "-" + year;
+        String date= year + "-" + month + "-" + day;
         txtdate.setText(date);
     }
 }
