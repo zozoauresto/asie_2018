@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_task"
+        android:title="Ajouter une tâche" />
+    <item
+        android:id="@+id/Trie1"
+        android:title="Trie + récent" />
+    <item
+        android:id="@+id/Trie2"
+        android:title="Trie - récent" />
+
+</menu>
