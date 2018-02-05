@@ -50,6 +50,7 @@ public class TaskAdd extends AppCompatActivity {
                     null,
                     values,
                     SQLiteDatabase.CONFLICT_REPLACE);
+            setNotification(intent.getStringExtra("DateTime"));
         }
         else
             Toast.makeText(getApplicationContext(), "La tâche existe déja !!!", Toast.LENGTH_SHORT).show();
@@ -57,7 +58,7 @@ public class TaskAdd extends AppCompatActivity {
 
         Intent menu = new Intent(this, MainActivity.class);
 
-        setNotification(intent.getStringExtra("DateTime"));
+
         startActivity(menu);
     }
 
@@ -70,9 +71,9 @@ public class TaskAdd extends AppCompatActivity {
 
         calendar.set(Calendar.HOUR_OF_DAY, Integer.valueOf(time[0]));
         calendar.set(Calendar.MINUTE, Integer.valueOf(time[1]));
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(date[0]));
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(date[2]));
         calendar.set(Calendar.MONTH, Integer.valueOf(date[1]) - 1);
-        calendar.set(Calendar.YEAR, Integer.valueOf(date[2]));
+        calendar.set(Calendar.YEAR, Integer.valueOf(date[0]));
 
         Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);

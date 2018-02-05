@@ -84,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
         View parent = (View) view.getParent();
 
         Intent intent = new Intent(this, TaskEdit.class);
-        Toast.makeText(getApplicationContext(),
-                "Group Name = " + String.valueOf(((TextView) parent.findViewById(R.id.task_id)).getText()), Toast.LENGTH_SHORT).show();
         intent.putExtra("Task", String.valueOf(((TextView) parent.findViewById(R.id.task_title)).getText()));
         intent.putExtra("Content", String.valueOf(((TextView) parent.findViewById(R.id.task_content)).getText()));
         intent.putExtra("Date", String.valueOf(((TextView) parent.findViewById(R.id.task_date)).getText()));

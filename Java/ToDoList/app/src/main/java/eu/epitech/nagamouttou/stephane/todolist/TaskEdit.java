@@ -48,10 +48,10 @@ public class TaskEdit extends AppCompatActivity {
         intent.putExtra("TContent", content);
         intent.putExtra("TDate", dateTime);
         intent.putExtra("Id", id);
-
+        String time =(((EditText)findViewById(R.id.editText4)).getText().toString()).length() == 7 ? ((EditText)findViewById(R.id.editText4)).getText().toString() : ((EditText)findViewById(R.id.editText4)).getText().toString() + ":00";
         intent.putExtra("Task", ((EditText)findViewById(R.id.editText)).getText().toString());
         intent.putExtra("Content", ((EditText)findViewById(R.id.editText2)).getText().toString());
-        intent.putExtra("Date", ((EditText)findViewById(R.id.editText3)).getText().toString() + " " + ((EditText)findViewById(R.id.editText4)).getText().toString());
+        intent.putExtra("Date", ((EditText)findViewById(R.id.editText3)).getText().toString() + " " + time);
 
         startActivity(intent);
     }
